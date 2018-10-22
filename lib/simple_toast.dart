@@ -43,13 +43,22 @@ class _SimpleToastState extends State<SimpleToast> {
       ],
     );
 
-    return WidgetsApp(
-      builder: (ctx, w) => overlay,
-      onGenerateRoute: (setting) => MaterialPageRoute(
-            builder: (ctx) => overlay,
-            settings: setting,
+    return Directionality(
+      child: Stack(children: <Widget>[
+        overlay,
+        Positioned(
+          left: 0.0,
+          right: 0.0,
+          top: 0.0,
+          bottom: 0.0,
+          child: IgnorePointer(
+            child: Container(
+              color: Colors.black.withOpacity(0.0),
+            ),
           ),
-      color: Colors.white,
+        )
+      ]),
+      textDirection: TextDirection.ltr,
     );
   }
 }
